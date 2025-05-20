@@ -1,0 +1,9 @@
+{
+  "watch": ["src"],
+  "ext": "ts,mjs,js,json,graphql",
+  "exec": "npm run build && ts-node -r dotenv/config",
+  "execMap": {
+    "ts": "ts-node -r dotenv/config"
+  },
+  "legacyWatch": true
+}

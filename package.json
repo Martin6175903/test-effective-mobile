@@ -2,9 +2,12 @@
   "name": "test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/main.ts",
+    "build": "rimraf build && concurrently \"tsc\"",
+    "lint": "eslint src/**/*.{ts,js}",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -14,20 +17,24 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://gitlab.com/test3653911/vanila-js-test-project/issues"
-  },
-  "homepage": "https://gitlab.com/test3653911/vanila-js-test-project#readme",
   "devDependencies": {
     "@types/express": "^5.0.2",
     "@types/node": "^22.15.19",
+    "dotenv": "^16.5.0",
     "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
     "globals": "^16.1.0",
+    "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "concurrently": "^9.1.2",
+    "express": "^5.1.0",
+    "pg": "^8.16.0",
+    "reflect-metadata": "^0.2.2",
+    "rimraf": "^6.0.1"
   }
 }
