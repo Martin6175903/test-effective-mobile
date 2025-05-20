@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
-import { CreateDateColumn, Generated, PrimaryColumn, UpdateDateColumn } from 'typeorm/browser'
+import { CreateDateColumn, UpdateDateColumn } from 'typeorm'
 
 export enum AppealStatus {
     Newest = 'Newest',

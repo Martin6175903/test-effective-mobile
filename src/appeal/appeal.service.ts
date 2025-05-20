@@ -1,12 +1,11 @@
 import { Repository } from 'typeorm'
 import { Appeal } from '../entity/Appeal'
-import { IAppeal } from './interfaces/appeal.interface'
 
 export class AppealService {
   constructor(private readonly appealRepository: Repository<Appeal>) {
   }
 
-  async findAll(searchTermDate: Date | Date[]) {
+  async findAll() {
     return this.appealRepository.find()
   }
 
@@ -14,13 +13,20 @@ export class AppealService {
     return this.appealRepository.findOne({ where: { id } })
   }
 
-  async changeStatus(id: number, dto: Appeal) {
-    return this.appealRepository.update(id, dto)
+  async changeStatus(id: string, dto: Appeal) {
+    const appeal = await this.appealRepository.findOne({ where: { id } })
+    if (appeal) {
+      this.appealRepository.merge(appeal, dto)
+      await this.appealRepository.save(appeal)
+      return appeal
+    } else {
+      return { message: 'Appeal not found' }
+    }
   }
 
   async create(dto: Appeal) {
-    return this.appealRepository.create(dto)
+    const appeal = this.appealRepository.create(dto)
+    await this.appealRepository.save(appeal)
+    return appeal
   }
-
-
 }

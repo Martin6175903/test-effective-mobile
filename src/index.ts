@@ -1,15 +1,15 @@
-import { AppDataSource } from "./data-source"
+import { AppDataSource } from './data-source'
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
+import { appealRouter } from './routes/appeal.routes'
+import { AppealController } from './appeal/appeal.controller'
 
 AppDataSource.initialize()
   .then(() => {
     const app = express()
     app.use(bodyParser.json())
 
-    app.get("/", (req: express.Request, res: express.Response) => {
-      res.send('Hello Node JS!')
-    })
+    app.use('/api', appealRouter)
 
     app.listen(process.env.PORT || 5000)
 
