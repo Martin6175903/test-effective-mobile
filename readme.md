@@ -1,0 +1,8 @@
+# Данные из .env
+* PORT=5000
+#### DATABASE
+* POSTGRES_DB="effective-mobile"
+* POSTGRES_USERNAME="postgres"
+* POSTGRES_PASSWORD="Skipper0091"
+* POSTGRES_PORT=5432
+* POSTGRES_HOST="localhost"

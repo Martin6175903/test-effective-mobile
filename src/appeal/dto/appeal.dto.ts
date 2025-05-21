@@ -1,5 +1,5 @@
 import { IsDate, IsEnum, IsOptional, IsString } from 'class-validator'
-import { AppealStatus } from '../../entity/Appeal'
+import { AppealStatus } from '../entity/Appeal'
 
 export class AppealDto {
   id: string
@@ -21,6 +21,6 @@ export class AppealDto {
 }
 
 export class RangeDate {
-  @IsDate({each: true})
+  @IsDate({ each: true })
   date: Date | Date[]
 }

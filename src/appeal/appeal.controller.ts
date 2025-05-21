@@ -1,7 +1,6 @@
 import { appealRepository } from '../repository'
-import {Request, Response} from 'express'
+import { Request, Response } from 'express'
 import { validate } from 'class-validator'
-import { Appeal } from '../entity/Appeal'
 import { validateAppealData } from '../utils/validate-appeal-data'
 import { RangeDate } from './dto/appeal.dto'
 
@@ -12,10 +11,10 @@ export class AppealController {
   }
 
   static async findWithRange(req: Request, res: Response) {
-    // const date = new RangeDate()
-    // date.date = req.body.date
-    // const isValidate = await validate(date)
-    // if (isValidate.length !== 0) throw new Error('Data is invalid')
+    const date = new RangeDate()
+    date.date = req.body.date
+    const isValidate = await validate(date)
+    if (isValidate.length !== 0) throw new Error('Data is invalid')
 
     const data = await appealRepository.findWithRange(req.body.date)
     return res.status(200).send(data)
@@ -29,7 +28,7 @@ export class AppealController {
   static async changeStatus(req: Request, res: Response) {
     const isValidate = await validateAppealData(req.body)
 
-    if(!isValidate) throw new Error('Data not valid')
+    if (!isValidate) throw new Error('Data not valid')
 
     const data = await appealRepository.changeStatus(req.params.id, req.body)
 
@@ -44,7 +43,7 @@ export class AppealController {
   static async create(req: Request, res: Response) {
     const isValidate = await validateAppealData(req.body)
 
-    if(!isValidate) throw new Error('Data not valid')
+    if (!isValidate) throw new Error('Data not valid')
 
     const data = await appealRepository.create(req.body)
 

@@ -1,4 +1,4 @@
-import { Appeal } from '../entity/Appeal'
+import { Appeal } from '../appeal/entity/Appeal'
 import { validate } from 'class-validator'
 
 export const validateAppealData = async (dto: Appeal) => {
@@ -9,5 +9,5 @@ export const validateAppealData = async (dto: Appeal) => {
 
   const isValidate = await validate(appeal)
 
-  return isValidate.length === 0;
+  return isValidate.length === 0
 }

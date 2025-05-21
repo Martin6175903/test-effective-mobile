@@ -1,4 +1,4 @@
-import { AppealStatus } from '../../entity/Appeal'
+import { AppealStatus } from '../entity/Appeal'
 
 export interface IAppeal {
   id: number
@@ -6,5 +6,3 @@ export interface IAppeal {
   description?: string
   status: AppealStatus
 }
-
-export interface ChangeStatusAppeal extends Omit<IAppeal, 'id'> {}

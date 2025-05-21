@@ -2,7 +2,6 @@ import { AppDataSource } from './data-source'
 import * as express from 'express'
 import * as bodyParser from 'body-parser'
 import { appealRouter } from './routes/appeal.routes'
-import { AppealController } from './appeal/appeal.controller'
 
 AppDataSource.initialize()
   .then(() => {
